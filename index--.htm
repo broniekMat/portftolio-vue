@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"> -->
+</head>
+<body>
+    
+<style>
+
+
+a {
+    text-decoration: none;
+    color:#000;
+    letter-spacing: 5px;
+    cursor:pointer !important;
+}
+
+.container {
+    font-family: 'Fira Mono', monospace;
+    max-width:1366px;
+    padding:20px 0;
+    margin:0 auto;
+    display:grid;
+    /* grid-template-rows: auto; */
+    grid-template-columns: repeat(3,33.3333333%);
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+    justify-items: center; 
+}
+.row {}
+.row__One {}
+.row__Two {} 
+.row__Three {}
+.row__Four {
+
+}
+
+
+/* FULL WIDTH DLA ROW */
+.row_Full {  grid-template-columns: repeat(1,100%) !important;} 
+ /* HALF WIDTH DLA ROW */
+ .row_Half {  grid-template-columns: repeat(2,50%); grid-column-start: 1; grid-column-end: 2;} 
+
+.headerWelcome span {font-size:21px;}
+.headerWelcome div {font-size:32px; background:#000; padding:10px; color:#fff; }
+
+ul {font-size:14px; text-align:right;}
+
+li{padding:5px 0; position: relative;  margin-bottom:9px;}
+
+li:nth-child(1) {color:#FF0000;}
+
+li:nth-child(1)::after {
+    background:red;
+    height:30px;
+    top:-3px;
+}
+
+li::after {
+    display:inline-block;
+    content:"";
+    margin:0 0 0 5px; text-align: center;
+    height:20px; width:5px;
+    background:black;
+    position: absolute;top:-1px;
+}
+
+.box {width: 210px; height:210px; border:1px solid #000; margin: 10px 0; text-align: center;}
+
+.box:nth-child(3) {
+    
+background: #fb2000; /* Old browsers */
+background: -moz-linear-gradient(left, #fb2000 0%, #ff7763 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #fb2000 0%,#ff7763 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #fb2000 0%,#ff7763 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */border:none;
+    transform:rotate(30deg);
+}
+ .box:nth-child(3) > a  {
+    display:inline-block;
+    transform:rotate(-30deg);
+    color:#fff;
+}
+.box > a { 
+    display: table-cell !important;
+    vertical-align: middle;
+}
+.box {display:table;}
+.box__One {border:none; text-align:center; text-transform: uppercase; font-size:24px; letter-spacing: 10px;}
+.box__One span {font-weight:700;}
+.box:nth-child(3):hover {
+    transform:rotate(0deg);
+}
+.box:nth-child(3):hover a {
+    transform:rotate(0deg);
+}
+
+.cell {
+    width:320px; height:320px;
+    background: #fb2000; /* Old browsers */
+    background: -moz-linear-gradient(left, #fb2000 0%, #ff7763 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #fb2000 0%,#ff7763 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #fb2000 0%,#ff7763 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    margin:0 auto; margin-top:10px;
+    position:relative;
+    justify-self: end; 
+}
+
+.rotateLine {position:absolute;background:#fff; width:150px; height:5px; transform:rotate(30deg); top:50%; left:20%;}
+.rotateLine--revers { background:#000; top:20% !important; }
+.rotateLine--straight {background:#000; transform:rotate(0deg); top:40%;width:300px;}
+
+
+.rotateSquare {width:25px; height:25px; background: #000; position:absolute;  left:10px; top:-10px;}  /*nadpis*/
+.rotateSquare--revers {
+background: #fb2000; /* Old browsers */
+background: -moz-linear-gradient(left, #fb2000 0%, #ff7763 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #fb2000 0%,#ff7763 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #fb2000 0%,#ff7763 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */} /*nadpis*/
+.rotateSquare--black {background:#000;}
+
+.inside {width:320px; background:black;display:none;text-align: left;padding:10px;position:absolute; right:0px; top:-3px;}
+.inside > li > a {color:#fff; letter-spacing:5px !important; width:100%;}
+.inside li {border-bottom:2px solid #fff; padding-bottom:5px; padding:15px 0; position:relative; width:100%;}
+.inside li:last-child {border:none !important;}
+.inside li::after {
+    content:"";
+    display:inline-block;
+    width:10px; height:10px;
+    position:absolute;
+    right:0;
+    background:#fff;
+}
+/* HOVER LI */
+
+.inside li:hover a {
+    color:#FF0000;
+} .inside li:hover::after { background : #FF0000; transform:rotate(30deg); }
+
+
+nav > ul > .expand:hover > .inside {
+display:block;
+}
+.expand{position:relative; z-index:9999;}
+
+.cell--black {background:#000;}
+.cell {position:relative;}
+
+
+@-webkit-keyframes diagonal-slide {
+  0% {
+    left: 0;
+    top:-10px;
+  }
+  50% {
+    left: 100px;
+  }
+  100% { 
+       left: 0;
+  }
+}
+
+@keyframes diagonal-slide {
+  0% {
+    left: 0;
+    top:-10px;
+  }
+  50% {
+    left: 100px;
+  }
+  100% { 
+       left: 0;
+  }
+  
+}
+
+@keyframes diagonal-slide--extend {
+  0% {
+    left: 0;
+    top:-10px;
+  }
+  50% {
+    left: 250px;
+  }
+  100% { 
+       left: 0;
+  }
+  
+}
+
+.rotateSquare {
+  -webkit-animation: diagonal-slide 2s, bounce 2s infinite;
+  animation: diagonal-slide 2s infinite;
+  animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+  animation-fill-mode: backwards; /* or: backwards, both, none */
+}
+.rotateSquare--black {
+  -webkit-animation: diagonal-slide--extend 2s, bounce 2s infinite;
+  animation: diagonal-slide--extend 2s infinite;
+  animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+  animation-fill-mode: backwards; /* or: backwards, both, none */
+}
+
+.iText {
+    width:7px;
+    height:290px;
+    background:white;
+    position: absolute;
+    top:-90px;
+    left:100px;
+}
+.iText::before {
+    content:""; display:block;
+    width:7px;
+    height:10px;
+    background:#000;
+    position: relative; top:80px;
+}
+.content {padding:20px 0; font-family: 'Poppins',serif; line-height:25px;}
+
+/*block_element--modyfikator */
+</style>
+
+    <div class="container">
+        
+        <div class="row row__One">
+        <div class="box box__One">
+        
+        <img src="logo.png" alt="" style="padding-bottom:15px">
+        Czym się <span>zajmuję?</span>
+    
+        </div>
+
+        <div class="box"><a href="#">FRONTEND</a></div>
+        <div class="box"><a href="#">GRAFIKA</a></div>
+        <div class="box"><a href="#">UX / UI</a></div>
+
+        </div>
+
+        <div class="row row__Two">
+            <div class="headerWelcome">
+            <span>Nazywam się</span>
+            <div><h1>Mateusz Broniek</h1></div>
+            </div>
+
+        <div class="content">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure odit minima quisquam explicabo inventore, minus, mollitia vel placeat praesentium possimus quidem at reprehenderit nobis odio quia, pariatur eligendi impedit! Laboriosam reiciendis veniam minus sunt qui. Praesentium consequatur reiciendis eaque quis voluptatum distinctio ab maxime quidem totam ullam a voluptatibus similique fugiat unde ratione perferendis velit, libero reprehenderit labore nulla sunt itaque neque? Ducimus aspernatur vero laudantium porro excepturi a dolorum obcaecati voluptate! Quae atque consequuntur distinctio, tempora debitis rerum. Nam.</p>
+
+            <div class="cell cell--black">
+
+                    <div class="iText">
+
+                    </div>
+
+            </div>
+
+        </div>
+
+        </div>
+        
+        <div class="row row__Three">
+            <nav style="display: grid;">
+                <ul style="justify-self: end">
+                    <li><a href="#">czym się zajmuję?</a></li>
+                    <li class="expand"><a href="#">portfolio</a>
+
+                        <ul class="inside">
+                            
+                            <li><a href="">logo</a></li>
+                            <li><a href="">identyfikacja wizualna</a></li>
+                            <li><a href="">e-commerce</a></li>
+                            <li><a href="">plakaty</a></li>
+                          
+                        </ul>
+
+                    </li>
+
+                    <li><a href="#">o mnie</a></li>
+                    <li><a href="#">fotografia</a></li>
+                </ul>
+            </nav>
+
+            <div class="cell">
+
+                <div class="rotateLine">
+                    <div class="rotateSquare"></div>
+                </div>
+
+            </div>
+
+            <div class="cell cell--black">
+
+                    <div class="iText">
+
+                    </div>
+
+            </div>
+
+            
+
+
+        </div>    
+       
+    </div>
+
+    <footer class="container">
+        <div class="row row_Full">
+
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam nemo tempore blanditiis praesentium eaque quibusdam assumenda veritatis similique labore esse obcaecati atque doloremque corrupti quisquam accusamus, ipsa harum culpa distinctio voluptate. Cupiditate blanditiis dolorem voluptatum consequatur a facere deleniti. Amet dignissimos qui, unde quod itaque non assumenda. Praesentium, corrupti quia at unde reiciendis enim earum! Ab dolorem facere nobis dolor inventore eligendi eaque, est asperiores vero consequuntur libero rerum, facilis voluptatibus suscipit voluptatum aut corporis nesciunt ipsa perferendis. Dignissimos, recusandae.
+
+        </div>
+        </footer>
+   
+
+    <!-- <div class="rotateLine rotateLine--revers">
+        <div class="rotateSquare rotateSquare--revers"></div>
+    </div>
+
+    <div class="rotateLine rotateLine--straight">
+        <div class="rotateSquare rotateSquare--black"></div>
+    </div> -->
+
+</body>
+</html>
